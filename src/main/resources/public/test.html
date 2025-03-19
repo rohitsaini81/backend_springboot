@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullscreen Video Overlay</title>
+    <style>
+        body {
+            background: black;
+            text-align: center;
+        }
+
+        /* Video container */
+        #videoContainer {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Video */
+        video {
+            width: 600px;
+            display: block;
+        }
+
+        /* Overlay text */
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 5px;
+            pointer-events: none;
+        }
+
+        /* Fullscreen support */
+        #videoContainer:fullscreen .overlay,
+        #videoContainer:-webkit-full-screen .overlay,
+        #videoContainer:-moz-full-screen .overlay,
+        #videoContainer:-ms-fullscreen .overlay {
+            display: block;
+            font-size: 5vw;
+            /* Adjust text size in fullscreen */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="videoContainer">
+        <video id="myVideo" controls>
+            <source src="sample.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="overlayText" class="overlay">Hello, Fullscreen Mode!</div>
+    </div>
+
+    <script>
+        const videoContainer = document.getElementById("videoContainer");
+        const video = document.getElementById("myVideo");
+        const overlayText = document.getElementById("overlayText");
+
+        // Function to enter/exit fullscreen
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                videoContainer.requestFullscreen().catch(err => console.log(err));
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Toggle fullscreen on double-click
+        video.addEventListener("dblclick", toggleFullscreen);
+    </script>
+
+</body>
+
+</html>
