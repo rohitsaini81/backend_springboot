@@ -1,11 +1,9 @@
-package com.project.project;
+package com.project.project.Videos;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -51,9 +49,7 @@ public class VideoController implements WebMvcConfigurer {
         return ResponseEntity.ok(video);
     }
 
-
-
-    @PostMapping
+    @PostMapping("/add/video")
     public VideoEntity addVideo(@RequestBody VideoEntity video) {
         return videoService.saveVideo(video);
     }

@@ -1,4 +1,4 @@
-package com.project.project;
+package com.project.project.Videos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.project.project;
+package com.project.project.Videos;
 
 import jakarta.persistence.*;
 
