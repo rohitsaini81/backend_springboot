@@ -20,12 +20,22 @@ public class UserService {
 
 
     public UserEntity createUser(String full_name, String email, String password) {
-        System.out.println("creating user 1");
-        if (full_name ==null &&email == null && password == null) {return null;}
-        if (userRepository.findByEmail(email).isEmpty()) {
-            return null;}
-        System.out.println("creating user");
-        return  null;
+        System.out.println("full_name = " + full_name + " email = " + email + " password = " + password);
+        if (full_name ==null || email == null || password == null) {
+            throw new IllegalArgumentException("Error: All fields must be provided!");
+        }
+        if (userRepository.findByEmail(email).isPresent()) {
+            throw new IllegalStateException("Error: Email already exists!");
+        }
+        try {
+        UserEntity user = new UserEntity();
+        user.setFull_name(full_name);
+        user.setEmail(email);
+        user.setPassword(password);
+        return userRepository.save(user);        }
+        catch (Exception e) {
+            throw new RuntimeException("Error creating user", e);        }
+
     }
 
 }

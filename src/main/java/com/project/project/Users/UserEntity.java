@@ -2,6 +2,8 @@ package com.project.project.Users;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 
 @Entity
 @Table(name = "users")
@@ -16,9 +18,11 @@ public class UserEntity {
     private String interest;
     private String password;
 
-    public UserEntity(){}
+    public UserEntity(){
+        this.id = UUID.randomUUID().toString();
+    }
     public UserEntity(String id, String full_name, String email, String phone_number, String college, Integer age, String interest, String password) {
-        this.id = id;
+        this.id = UUID.randomUUID().toString();
         this.full_name = full_name;
         this.email = email;
         this.phone_number = phone_number;
@@ -60,5 +64,37 @@ public class UserEntity {
     public String getPassword() {
         return password;
     }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
+
 
