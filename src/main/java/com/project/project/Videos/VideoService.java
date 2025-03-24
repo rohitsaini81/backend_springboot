@@ -2,6 +2,7 @@ package com.project.project.Videos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 
@@ -17,6 +18,14 @@ public class VideoService {
 
     public VideoEntity getVideoById(Long id) { // ✅ Expect Long instead of String
         return videoRepository.findById(id).orElse(null);
+    }
+
+    public List<VideoEntity> getVideosBytag(String query){
+        return videoRepository.findByTagsContaining(query);
+    }
+
+    public List<VideoEntity> getVideosByCategory(String type){
+        return videoRepository.findByCategory(type);
     }
 
     public VideoEntity saveVideo(VideoEntity video) {
