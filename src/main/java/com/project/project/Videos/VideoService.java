@@ -16,7 +16,7 @@ public class VideoService {
         return videoRepository.findAll();
     }
 
-    public VideoEntity getVideoById(Long id) { // ✅ Expect Long instead of String
+    public VideoEntity getVideoById(String id) { // ✅ Expect Long instead of String
         return videoRepository.findById(id).orElse(null);
     }
 

@@ -6,10 +6,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface VideoRepository extends JpaRepository<VideoEntity, Long> {
+public interface VideoRepository extends JpaRepository<VideoEntity, String> {
 
     List<VideoEntity> findByTagsContaining(String tag);
     List<VideoEntity> findByCategory(String category);
+
 
 }
 

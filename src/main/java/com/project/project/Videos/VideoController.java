@@ -40,7 +40,7 @@ public class VideoController implements WebMvcConfigurer {
     }
 
     @GetMapping("/video") // find video by id for preview video
-    public ResponseEntity<VideoEntity> getVideoById(@RequestParam Long id) { // ✅ Expect Long
+    public ResponseEntity<VideoEntity> getVideoById(@RequestParam String id) { // ✅ Expect Long
         System.out.println("params id = "+id);
         VideoEntity video = videoService.getVideoById(id);
         if (video == null) {
@@ -51,7 +51,7 @@ public class VideoController implements WebMvcConfigurer {
 
     @GetMapping("/search") // search from tags then will works like searching from title of videos
     public List<VideoEntity> searchVideo(@RequestParam String query){
-        return videoService.getVideosBytag(query);
+        return videoService.getVideosBytag(query.toLowerCase());
     }
 
     @GetMapping("/category") // list from category by filter
