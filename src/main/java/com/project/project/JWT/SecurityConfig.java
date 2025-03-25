@@ -12,12 +12,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/index.html", "/test.html", "/static/**", "/public/**").permitAll() // Allow public access
+                        .requestMatchers("/api/stream/**").permitAll() // Allow public API
+                        .requestMatchers("/public/**").permitAll() // Allow static resources
+                        .requestMatchers("/files/**").permitAll() // Allow everything (for testing)
                         .anyRequest().authenticated()
                 )
-                .csrf(csrf -> csrf.disable())  // Disable CSRF for testing purposes
-                .formLogin(login -> login.disable())
-                .httpBasic(httpBasic -> httpBasic.disable());
+                .csrf(csrf -> csrf.disable()) // Disable CSRF if needed
+                .formLogin(login -> login.disable()) // Disable login form
+                .httpBasic(basic -> basic.disable()); // Disable basic auth
 
         return http.build();
     }
