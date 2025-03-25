@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/stream")
 @CrossOrigin(origins = "http://localhost:3000")
 public class VideoController implements WebMvcConfigurer {
     @Autowired
