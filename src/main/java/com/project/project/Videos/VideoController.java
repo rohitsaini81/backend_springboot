@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/stream")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class VideoController implements WebMvcConfigurer {
     @Autowired
     private VideoService videoService;
@@ -51,7 +51,7 @@ public class VideoController implements WebMvcConfigurer {
 
     @GetMapping("/search") // search from tags then will works like searching from title of videos
     public List<VideoEntity> searchVideo(@RequestParam String query){
-        return videoService.getVideosBytag(query.toLowerCase());
+        return videoService.getVideosByKey(query);
     }
 
     @GetMapping("/category") // list from category by filter

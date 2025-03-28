@@ -13,17 +13,19 @@ public class VideoEntity {
     private String video_url;
     private String description;
     private String category;
+    private String duration;
     private String tags;
 
     public VideoEntity() {} // Required default constructor
 
-    public VideoEntity(String id,String title, String img_url, String video_url, String category, String tags, String description) {
+    public VideoEntity(String id,String title, String img_url, String video_url, String category, String tags,String duration, String description) {
         this.id= id;
         this.title = title;
         this.img_url = img_url;
         this.video_url = video_url;
         this.description = description;
         this.category = category;
+        this.duration = duration;
         this.tags = tags;
     }
 
@@ -33,5 +35,6 @@ public class VideoEntity {
     public String getVideo() { return video_url; }
     public String getDescription() { return description; }
     public String getCategory() { return category; }
+    public String getDuration() { return duration;}
     public String getTag() { return tags; }
 }

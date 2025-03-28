@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 @RequestMapping("/files") // Public file access URL
 public class FileController {
 
-    private final String fileBasePath = "/home/admin/Downloads";
+    private final String fileBasePath = "/home/ubuntu/Downloads";
 
     @GetMapping("/{filename}")
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {

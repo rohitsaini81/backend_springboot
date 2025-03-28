@@ -24,6 +24,11 @@ public class VideoService {
         return videoRepository.findByTagsContaining(query);
     }
 
+    public List<VideoEntity> getVideosByKey(String query) {
+        String formattedQuery = query.replace(" ", " & "); // Convert "sister love" -> "sister & love"
+        return videoRepository.searchByKeyword(formattedQuery);
+    }
+
     public List<VideoEntity> getVideosByCategory(String type){
         return videoRepository.findByCategory(type);
     }
