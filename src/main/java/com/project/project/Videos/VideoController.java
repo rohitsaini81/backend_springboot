@@ -54,16 +54,11 @@ public class VideoController implements WebMvcConfigurer {
         return videoService.getVideosByKey(query);
     }
 
-    @GetMapping("/category") // list from category by filter
-    public List<VideoEntity> findByCategory(@RequestParam String type){
-        return videoService.getVideosByCategory(type);
+    @GetMapping("/category")
+    public List<VideoEntity> searchVideos(@RequestParam String tag) {
+        return videoService.searchByTag(tag);
     }
 
-
-    @PostMapping("/add/video")
-    public VideoEntity addVideo(@RequestBody VideoEntity video) {
-        return videoService.saveVideo(video);
-    }
 
 
 

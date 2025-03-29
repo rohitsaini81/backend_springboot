@@ -2,6 +2,8 @@ package com.project.project.Videos;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "videos")
 public class VideoEntity {
@@ -14,11 +16,12 @@ public class VideoEntity {
     private String description;
     private String category;
     private String duration;
-    private String tags;
+    @Column(name = "tags", columnDefinition = "TEXT[]")  // PostgreSQL Array
+    private String[] tags;
 
     public VideoEntity() {} // Required default constructor
 
-    public VideoEntity(String id,String title, String img_url, String video_url, String category, String tags,String duration, String description) {
+    public VideoEntity(String id,String title, String img_url, String video_url, String category, String[] tags,String duration, String description) {
         this.id= id;
         this.title = title;
         this.img_url = img_url;
@@ -36,5 +39,6 @@ public class VideoEntity {
     public String getDescription() { return description; }
     public String getCategory() { return category; }
     public String getDuration() { return duration;}
-    public String getTag() { return tags; }
-}
+    public List<String> getTagsList() {
+        return List.of(tags);  // Convert array to list
+    }}

@@ -20,20 +20,19 @@ public class VideoService {
         return videoRepository.findById(id).orElse(null);
     }
 
-    public List<VideoEntity> getVideosBytag(String query){
-        return videoRepository.findByTagsContaining(query);
-    }
 
     public List<VideoEntity> getVideosByKey(String query) {
         String formattedQuery = query.replace(" ", " & "); // Convert "sister love" -> "sister & love"
         return videoRepository.searchByKeyword(formattedQuery);
     }
 
-    public List<VideoEntity> getVideosByCategory(String type){
-        return videoRepository.findByCategory(type);
+
+
+    public List<VideoEntity> searchByTag(String tag) {
+        return videoRepository.findByTag(tag);
     }
 
-    public VideoEntity saveVideo(VideoEntity video) {
-        return videoRepository.save(video);
-    }
+
+
+
 }

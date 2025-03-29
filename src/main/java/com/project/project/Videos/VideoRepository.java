@@ -12,9 +12,11 @@ public interface VideoRepository extends JpaRepository<VideoEntity, String> {
 
     @Query(value = "SELECT * FROM videos WHERE to_tsvector('english', title) @@ to_tsquery('english', :query)", nativeQuery = true)
     List<VideoEntity> searchByKeyword(@Param("query") String query);
-    List<VideoEntity> findByTagsContaining(String tag);
-    List<VideoEntity> findByCategory(String category);
 
 
+
+    // get videos where tags array contains a specific tag
+    @Query(value = "SELECT * FROM videos WHERE :tag = ANY(tags)", nativeQuery = true)
+    List<VideoEntity> findByTag(@Param("tag") String tag);
 }
 
